@@ -1,0 +1,36 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="BaseAppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <!--        <item name="colorPrimary">@color/colorPrimary</item>-->
+        <!--        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>-->
+        <!--        <item name="colorAccent">@color/colorAccent</item>-->
+        <!--        <item name="android:listDivider">@drawable/shape_divider_dash</item>-->
+    </style>
+
+    <!-- Application theme. -->
+    <style name="AppTheme" parent="BaseAppTheme">
+        <item name="android:windowIsTranslucent">false</item>  <!-- 透明背景 -->
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowBackground">@null</item>
+        <item name="android:windowDisablePreview">true</item>
+        <item name="android:windowNoDisplay">false</item>
+    </style>
+
+
+    <style name="MainTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:statusBarColor">@color/white</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowLayoutInDisplayCutoutMode">shortEdges</item>
+        <!--如果设置该属性，会导致界面加载fragment，并且隐藏状态栏时出现闪状态栏的问题，但是如果不设置该属性（true），会导致闪屏页面沉到虚拟按键底下-->
+        <!--经过测试，为闪屏设置单独的背景布局，调整原有的windowbackground的底部margin高度，会出现高度跳，无虚拟按键时高度差异大等问题-->
+        <item name="android:windowDrawsSystemBarBackgrounds">false</item>
+    </style>
+
+    <style name="htab01_bottom_selected_text">
+        <item name="android:textSize">10dp</item>
+    </style>
+</resources>

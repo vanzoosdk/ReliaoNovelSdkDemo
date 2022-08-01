@@ -1,0 +1,72 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion 30
+    defaultConfig {
+        applicationId "com.vanzoo.novel"
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode 2
+        versionName "1.0.1"
+    }
+
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.3.1'
+    implementation 'com.google.android.material:material:1.4.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.1'
+
+    //*****************************ADroi卓易广告*******************************
+    //ADroi聚合SDK
+    implementation(name: 'adroi.poly.sdk-10.0.0.33', ext: 'aar')
+    //广点通SDK
+    implementation(name: 'GDTSDK.unionNormal.4.464.1334', ext: 'aar')
+    //广点通广告辅助SDK，注意仅用于编译，不可打入应用当中
+    compileOnly fileTree('libs/tbs_sdk_thirdapp_v4.3.0.1020_43633_compile_only.jar')
+    //穿山甲SDK
+    implementation(name: 'open_ad_sdk_4.4.0.9', ext: 'aar')
+    //快手SDK
+    implementation(name: 'kssdk-ad-3.3.24', ext: 'aar')
+    //百度SDK
+    implementation(name: 'Baidu_MobAds_SDK-release_v9.212', ext: 'aar')
+    // 华为
+    implementation 'com.huawei.hms:ads:3.4.47.302'
+    // 京东
+    implementation(name: 'jad_yun_sdk_v1.2.0', ext: 'aar')
+    //gif库
+    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.15'
+    //*****************************ADroi卓易广告*******************************
+
+    // 热料小说sdk
+    implementation 'io.github.vanzoosdk:ReliaoNovelSdk:1.0.2'
+
+}
