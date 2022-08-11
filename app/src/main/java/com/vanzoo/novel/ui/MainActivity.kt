@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.vanzoo.novel.R
+import com.vanzoo.novelsdk.NovelSdk
 import com.vanzoo.novelsdk.ui.activity.NovelFragment
 
 class MainActivity : AppCompatActivity() {
@@ -27,9 +28,11 @@ class MainActivity : AppCompatActivity() {
 
         mViewPager?.offscreenPageLimit = 2
 
-        val novelFragment = NovelFragment()
+        val novelFragment = NovelSdk.getNovelFragment()
         val homeFragment = HomeFragment()
-        mFragments.add(novelFragment)
+        if(novelFragment != null){
+            mFragments.add(novelFragment)
+        }
         mFragments.add(homeFragment)
 
         mViewPager?.offscreenPageLimit = 2

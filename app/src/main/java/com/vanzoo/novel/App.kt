@@ -51,7 +51,8 @@ class App : Application() {
          */
         val initSDKConfig = builder.build()
         AdView.initSDK(this, initSDKConfig)
-        //小说sdk初始化
-        NovelSdk.initAdId(this,"NOVEL_SDK_Setting.json")
+        //热料小说sdk初始化
+        val channel = 1 //api请求中的的channel参数，表示渠道，1:飞觅浏览器, 2:搜搜, 3:最美天气
+        NovelSdk.init(this, channel, "NOVEL_SDK_Setting.json")
     }
 }
