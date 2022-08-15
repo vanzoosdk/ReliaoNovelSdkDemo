@@ -67,6 +67,6 @@ dependencies {
     //*****************************ADroi卓易广告*******************************
 
     // 热料小说sdk
-    implementation 'io.github.vanzoosdk:ReliaoNovelSdk:1.1.1'
+    implementation 'io.github.vanzoosdk:ReliaoNovelSdk:1.1.2'
 
 }
