@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/github/ReliaoNovelSdkDemo/app/src/main/res/layout/activity_main.xml" value="0.3" />
+        <entry key="..\:/github/ReliaoNovelSdkDemo/app/src/main/res/layout/activity_main_no_pageview.xml" value="0.3" />
         <entry key="..\:/github/ReliaoNovelSdkDemo/app/src/main/res/layout/activity_splash.xml" value="0.3" />
         <entry key="..\:/github/ReliaoNovelSdkDemo/app/src/main/res/layout/fragment_home.xml" value="0.3" />
         <entry key="..\:/work/vanzoo/front_end/wanzu/reliaonovelsdk/NovelSdk/src/main/res/drawable/isb_indicator_rounded_corners.xml" value="0.203" />
