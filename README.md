@@ -4,6 +4,7 @@
 | ---- | ---- | --- |
 | 1.1.1 | 2022-8-10 | 适配 adroi-sdk:10.0.0.33 |
 | 1.1.2 | 2022-8-12 | 优化UI，修复闪退bug |
+| 1.1.4 | 2022-9-7 | 适配 adroi-sdk:10.0.0.51，增加个性化功能 |
 
 
 
@@ -51,6 +52,19 @@ NovelSdk.init(this, channel, "NOVEL_SDK_Setting.json")
 创建NovelFragment
 ```
 val novelFragment = NovelSdk.getNovelFragment()
+```
+
+#### 个性化功能
+小说SDK为开发者提供了若干接口，以支持个性化功能开发。
+##### 1、获取用户阅读记录
+获取用户的阅读记录以及打开对应的小说
+```
+//获取用户的阅读记录列表，返回List<BookRecordBean>
+NovelSdk.getNovelRecord(context)
+
+//打开阅读记录中对应的小说
+NovelSdk.openNovelReader(context,bookRecordBean)
+
 ```
 
 ### 五、其他

@@ -8,6 +8,15 @@ buildscript {
         maven { url "https://jitpack.io" }
         maven { url 'https://jcenter.bintray.com/' }
         maven { url 'https://developer.huawei.com/repo/' }
+
+        //adroi广告仓库
+        maven {
+            url 'https://maven.freemeos.com:13458/repository/adroi/'
+        }
+        //adroi广告依赖报错，需要引入的仓库
+        maven {
+            url 'https://artifact.bytedance.com/repository/pangle'
+        }
     }
 
     dependencies {
@@ -23,6 +32,15 @@ allprojects {
         maven { url 'https://jitpack.io' }
         maven { url 'https://jcenter.bintray.com/' }
         maven { url 'https://developer.huawei.com/repo/' }
+
+        //adroi广告仓库
+        maven {
+            url 'https://maven.freemeos.com:13458/repository/adroi/'
+        }
+        //adroi广告依赖报错，需要引入的仓库
+        maven {
+            url 'https://artifact.bytedance.com/repository/pangle'
+        }
     }
 }
 
