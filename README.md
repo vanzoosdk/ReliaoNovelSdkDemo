@@ -6,7 +6,7 @@
 | 1.1.2 | 2022-8-12 | 优化UI，修复闪退bug |
 | 1.1.4 | 2022-9-7 | 适配 adroi-sdk:10.0.0.51，增加个性化功能 |
 | 1.1.9 | 2022-10-25 | 修复内存溢出问题,增加获取书架中书籍列表功能 |
-
+| 1.2.2 | 2022-10-27 | 增加获取热度排行榜数据并进入对应书籍详情页功能 |
 
 ## SDK接入前说明
 sdk接入了adroi广告，接入sdk前需要申请好相应广告位。
@@ -73,6 +73,20 @@ NovelSdk.getBookShelf(context)
 
 //打开书架中中对应的小说，进入小说阅读页
 NovelSdk.openNovelReader(context,collBookBean)
+
+```
+
+##### 3、获取/释放热度排行榜数据，进入书籍详情页
+```
+//获取热度排行榜数据,回调中返回List<Book>
+NovelSdk.getRankData(object : RankDataCallBck<List<Book>> {
+    override fun result(data: List<Book>) {
+       //do something
+    }
+})
+
+//打开热度排行中的书籍，进入书籍详情页
+NovelSdk.openBookInfo(context,book)
 
 ```
 
