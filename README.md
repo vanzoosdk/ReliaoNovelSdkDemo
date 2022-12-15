@@ -8,6 +8,7 @@
 | 1.1.9 | 2022-10-25 | 修复内存溢出问题,增加获取书架中书籍列表功能 |
 | 1.2.2 | 2022-10-27 | 增加获取热度排行榜数据并进入对应书籍详情页功能 |
 | 1.2.8 | 2022-11-09 | 修改广告展示相关bug |
+| 1.2.9 | 2022-12-15 | 适配adroi-sdk:10.0.0.63 |
 
 ## SDK接入前说明
 sdk接入了adroi广告，接入sdk前需要申请好相应广告位。
@@ -28,6 +29,8 @@ sdk内部用到了adroi广告，接入该sdk前，请务必先接入adroi广告�
 ```
 // 热料小说sdk,xxx部分请填入对应的版本号
 implementation 'io.github.vanzoosdk:ReliaoNovelSdk:xxx'
+// Glide
+implementation 'com.github.bumptech.glide:glide:4.12.0'
 ```
 
 ### 二、配置广告位

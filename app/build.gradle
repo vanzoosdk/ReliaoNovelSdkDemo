@@ -77,6 +77,8 @@ dependencies {
     }
 
     // 热料小说sdk
-    implementation 'io.github.vanzoosdk:ReliaoNovelSdk:1.2.8'
+    implementation 'io.github.vanzoosdk:ReliaoNovelSdk:1.2.9'
+    // Glide
+    implementation 'com.github.bumptech.glide:glide:4.12.0'
 
 }
