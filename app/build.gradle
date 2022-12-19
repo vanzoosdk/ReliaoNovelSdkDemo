@@ -67,7 +67,7 @@ dependencies {
     //*****************************ADroi卓易广告*******************************
 
     //adroi在线依赖
-    implementation('com.adroi.polyunion:adroi.poly.sdk:10.0.0.51') {
+    implementation('com.adroi.polyunion:adroi.poly.sdk:10.0.0.63') {
 //         exclude group: 'com.qq.e.union' //广点通
 //         exclude group: 'com.kssdk.ad'  //快手
 //         exclude group: 'com.baidu.mobads.sdk'  //百度
