@@ -9,19 +9,21 @@ buildscript {
         maven { url 'https://jcenter.bintray.com/' }
         maven { url 'https://developer.huawei.com/repo/' }
 
-        //adroi广告仓库
+        //GroMore SDK依赖
         maven {
-            url 'https://maven.freemeos.com:13458/repository/adroi/'
+            url "https://artifact.bytedance.com/repository/pangle"
         }
-        //adroi广告依赖报错，需要引入的仓库
+
+        //mintegral sdk依赖   引入mintegral sdk需要添加此maven
         maven {
-            url 'https://artifact.bytedance.com/repository/pangle'
+            url "https://dl-maven-android.mintegral.com/repository/mbridge_android_sdk_support/"
         }
     }
 
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath 'com.android.tools.build:gradle:4.0.1'
+        classpath 'org.greenrobot:greendao-gradle-plugin:3.3.0'
     }
 }
 
@@ -33,13 +35,14 @@ allprojects {
         maven { url 'https://jcenter.bintray.com/' }
         maven { url 'https://developer.huawei.com/repo/' }
 
-        //adroi广告仓库
+        //GroMore SDK依赖
         maven {
-            url 'https://maven.freemeos.com:13458/repository/adroi/'
+            url "https://artifact.bytedance.com/repository/pangle"
         }
-        //adroi广告依赖报错，需要引入的仓库
+
+        //mintegral sdk依赖   引入mintegral sdk需要添加此maven
         maven {
-            url 'https://artifact.bytedance.com/repository/pangle'
+            url "https://dl-maven-android.mintegral.com/repository/mbridge_android_sdk_support/"
         }
     }
 }

@@ -1,6 +1,9 @@
 {
-  "detail_code_id": "",
-  "chapter_code_id": "",
-  "bottom_banner_code_id": "",
-  "reward_code_id": ""
+  "detail_code_id": "此处填充书籍详情页信息流广告位id",
+  "detail_scene_id": "此处填充书籍详情页信息流广告位场景id",
+  "chapter_code_id": "此处填充书籍章节阅读页信息流广告位id",
+  "chapter_scene_id": "此处填充书籍章节阅读页信息流广告位场景id",
+  "bottom_banner_code_id": "此处填充书籍章节阅读页底部banner广告位id",
+  "reward_code_id": "此处填充书籍章节阅读页激励视频广告位id",
+  "reward_scene_id": "此处填充书籍章节阅读页激励视频广告位场景id"
 }

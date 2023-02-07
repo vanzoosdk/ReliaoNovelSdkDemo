@@ -1,58 +1,147 @@
 package com.vanzoo.novel
 
 import android.app.Application
-import com.adroi.polyunion.view.AdConfig
-import com.adroi.polyunion.view.AdView
-import com.adroi.polyunion.view.InitSDKConfig
-import com.bytedance.sdk.openadsdk.TTAdConstant
+import android.content.Context
+import android.provider.Settings
+import com.bytedance.msdk.api.UserInfoForSegment
+import com.bytedance.msdk.api.v2.*
+import com.bytedance.msdk.api.v2.GMAdConstant.ADULT_STATE
 import com.vanzoo.novelsdk.NovelSdk
+import org.json.JSONException
+import org.json.JSONObject
+import java.io.BufferedReader
+import java.io.IOException
+import java.io.InputStreamReader
 
 class App : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        initAdroiAd()
+        initGroMoreAd()
     }
 
-    private fun initAdroiAd() {
-        //聚合SDK初始化
-        val builder = InitSDKConfig.Builder()
-            .AppId("adroi广告appid") //在ADroi后台注册的应用id
-            .TTAppName(resources.getString(R.string.app_name)) //在穿山甲SDK后台注册的应用名称
-            .setHwAppName(resources.getString(R.string.app_name))
-            .setClientId("test_client")
-            .setChannel("test_channel")
-            .setOaidProvider { "test_oaid" }
-            /**
-             * 若接入激励视频广告，可调用此方法设置横竖屏(默认竖屏)
-             * 参数：
-             * AdConfig.REWARD_VIDEO_SCREEN_VERTICAL    竖屏
-             * AdConfig.REWARD_VIDEO_SCREEN_HORIZONTAL    横屏
-             */
-            .RewardVideoScreenDirection(AdConfig.REWARD_VIDEO_SCREEN_VERTICAL) //设置穿山甲SDK落地页风格
-            .TTAdLoadingPageTheme(TTAdConstant.TITLE_BAR_THEME_LIGHT)
-            /**
-             * 若接入头条网盟广告，可调用以下方法(接收不定参数)设置允许直接下载的网络状态集合
-             * 聚合SDK默认直接下载的网络为WIFI，接入应用根据需要，设置多种网络类型
-             * 参数:
-             * TTAdConstant.NETWORK_STATE_MOBILE 流量环境下
-             * TTAdConstant.NETWORK_STATE_2G    2G网络环境
-             * TTAdConstant.NETWORK_STATE_3G    3G网络环境
-             * TTAdConstant.NETWORK_STATE_4G    4G网络环境
-             * TTAdConstant.NETWORK_STATE_WIFI  Wifi网络环境
-             */
-            .TTAllowDownloadNetworkTypes(TTAdConstant.NETWORK_STATE_WIFI)
-            .setAPIDirectDownloadNetworkTypes(AdConfig.NETWORK_TYPE_WIFI)
-            .debug(true) // ADroi SDK 测试开关，服务器判定是否使用测试id
-
-
-        /**
-         * 测试时，再行打开，避免聚合最终使用了测试id进行发布
-         */
-        val initSDKConfig = builder.build()
-        AdView.initSDK(this, initSDKConfig)
-        //热料小说sdk初始化
+    private var sInit = false
+    private fun initGroMoreAd() {
+        if (!sInit) {
+            GMMediationAdSdk.initialize(this, buildV2Config(this))
+            sInit = true
+        }
+        //NovelSdk初始化
         val channel = 1 //api请求中的的channel参数，表示渠道，1:飞觅浏览器, 2:搜搜, 3:最美天气
         NovelSdk.init(this, channel, "NOVEL_SDK_Setting.json")
+    }
+    private fun buildV2Config(context: Context): GMAdConfig {
+            /**
+         * GMConfigUserInfoForSegment设置流量分组的信息
+         * 注意：
+         * 1、请每次都传入新的info对象
+         * 2、字符串类型的值只能是大小写字母，数字，下划线，连字符，字符个数100以内 ( [A-Za-z0-9-_]{1,100} ) ，不符合规则的信息将被过滤掉，不起作用。
+             */
+            /**
+         * GMConfigUserInfoForSegment设置流量分组的信息
+         * 注意：
+         * 1、请每次都传入新的info对象
+         * 2、字符串类型的值只能是大小写字母，数字，下划线，连字符，字符个数100以内 ( [A-Za-z0-9-_]{1,100} ) ，不符合规则的信息将被过滤掉，不起作用。
+             */
+        val userInfo = GMConfigUserInfoForSegment()
+        userInfo.userId = "msdk-demo"
+        userInfo.gender = UserInfoForSegment.GENDER_MALE
+        userInfo.channel = "msdk-channel"
+        userInfo.subChannel = "msdk-sub-channel"
+        userInfo.age = 999
+        userInfo.userValueGroup = "msdk-demo-user-value-group"
+        val customInfos: MutableMap<String, String> = HashMap()
+        customInfos["aaaa"] = "test111"
+        customInfos["bbbb"] = "test222"
+        userInfo.customInfos = customInfos
+        var jsonObject: JSONObject? = null
+        //读取json文件，本地缓存的配置
+        //读取json文件，本地缓存的配置
+        try {
+            jsonObject = JSONObject(getJson("androidlocalconfig.json", context))
+        } catch (e: JSONException) {
+            e.printStackTrace()
+        }
+        val initConfig: MutableMap<String, Any> = HashMap()
+        initConfig["1111"] = "22222"
+        initConfig["22222"] = "33333"
+        initConfig["44444"] = "5555"
+        return GMAdConfig.Builder()
+            .setAppId("填写在gromore中申请的appid")
+            .setAppName(context.resources.getString(R.string.app_name))
+            .setDebug(true) //默认false，测试阶段打开，可以通过日志排查问题
+            .setPublisherDid(getAndroidId(context)!!)
+            .setOpenAdnTest(false) //开启第三方ADN测试时需要设置为true，会每次重新拉去最新配置，release 包情况下必须关闭.默认false
+            .setConfigUserInfoForSegment(userInfo)
+            .setPangleOption(
+                GMPangleOption.Builder()
+                    .setIsPaid(false)
+                    .setTitleBarTheme(GMAdConstant.TITLE_BAR_THEME_DARK)
+                    .setAllowShowNotify(true)
+                    .setAllowShowPageWhenScreenLock(true)
+                    .setDirectDownloadNetworkType(
+                        GMAdConstant.NETWORK_STATE_WIFI,
+                        GMAdConstant.NETWORK_STATE_3G
+                    )
+                    .setIsUseTextureView(true)
+                    .setNeedClearTaskReset()
+                    .setKeywords("")
+                    .build()
+            )
+            .setGdtOption(
+                GMGdtOption.Builder()
+                    .setWxInstalled(false)
+                    .setOpensdkVer(null)
+                    .setSupportH265(false)
+                    .setSupportSplashZoomout(false)
+                    .build()
+            )
+        /**
+             * 隐私协议设置，详见GMPrivacyConfig
+         */
+            .setPrivacyConfig(object : GMPrivacyConfig() {
+                // 重写相应的函数，设置需要设置的权限开关，不重写的将采用默认值
+                // 例如，重写isCanUsePhoneState函数返回true，表示允许使用ReadPhoneState权限。
+                override fun isCanUsePhoneState(): Boolean {
+                    return true
+                }
+                //当isCanUseWifiState=false时，可传入Mac地址信息，穿山甲sdk使用您传入的Mac地址信息
+                override fun getMacAddress(): String {
+                    return ""
+                }
+                // 设置青少年合规，默认值GMAdConstant.ADULT_STATE.AGE_ADULT为成年人
+                override fun getAgeGroup(): ADULT_STATE {
+                    return ADULT_STATE.AGE_ADULT
+                }
+            })
+            .setLocalExtra(initConfig)
+            .setCustomLocalConfig(jsonObject)
+            .build()
+
+
+    }
+    private fun getAndroidId(context: Context): String? {
+        var androidId: String? = null
+        try {
+            androidId =
+                Settings.System.getString(context.contentResolver, Settings.System.ANDROID_ID)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+        return androidId
+    }
+    private fun getJson(fileName: String?, context: Context): String? {
+        val stringBuilder = StringBuilder()
+        try {
+            val `is` = context.assets.open(fileName!!)
+            val bufferedReader = BufferedReader(InputStreamReader(`is`))
+            var line: String?
+            while (bufferedReader.readLine().also { line = it } != null) {
+                stringBuilder.append(line)
+            }
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
+        return stringBuilder.toString()
     }
 }

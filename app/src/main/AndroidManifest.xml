@@ -15,49 +15,9 @@
 
         <!-- adroi广告配置 start-->
         <!-- 需要广点通SDK广告时才配置： -->
-        <provider
-            android:name="com.qq.e.comm.GDTFileProvider"
-            android:authorities="${applicationId}.gdt.fileprovider"
-            android:exported="false"
-            android:grantUriPermissions="true">
-            <meta-data
-                android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/gdt_file_path" />
-        </provider>
         <!-- 需要头条网盟SDK广告时才配置： -->
-        <provider
-            android:name="com.bytedance.sdk.openadsdk.multipro.TTMultiProvider"
-            android:authorities="${applicationId}.TTMultiProvider"
-            android:exported="false" />
-        <provider
-            android:name="com.bytedance.sdk.openadsdk.TTFileProvider"
-            android:authorities="${applicationId}.TTFileProvider"
-            android:exported="false"
-            android:grantUriPermissions="true">
-            <meta-data
-                android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/tt_file_paths" />
-        </provider>
         <!-- 百度广告SDK配置 -->
-        <activity
-            android:name="com.baidu.mobads.sdk.api.AppActivity"
-            android:configChanges="screenSize|keyboard|keyboardHidden|orientation"
-            android:theme="@android:style/Theme.NoTitleBar" />
-        <activity
-            android:name="com.baidu.mobads.sdk.api.MobRewardVideoActivity"
-            android:configChanges="screenSize|orientation|keyboardHidden"
-            android:launchMode="singleTask"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 
-        <provider
-            android:name="com.baidu.mobads.sdk.api.BdFileProvider"
-            android:authorities="${applicationId}.bd.provider"
-            android:exported="false"
-            android:grantUriPermissions="true">
-            <meta-data
-                android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/bd_file_paths" />
-        </provider>
         <!-- adroi广告配置 end -->
 
 
@@ -73,14 +33,92 @@
             </intent-filter>
         </activity>
 
-<!--        <activity-->
+        <provider
+            android:name="com.qq.e.comm.GDTFileProvider"
+            android:authorities="${applicationId}.gdt.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/gdt_file_path" />
+        </provider>
+        <activity
+            android:name="com.qq.e.ads.PortraitADActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.qq.e.ads.LandscapeADActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+            android:screenOrientation="landscape"
+            tools:replace="android:screenOrientation" />
+        <service
+            android:name="com.qq.e.comm.DownloadService"
+            android:exported="false" />
+        <activity
+            android:name="com.qq.e.ads.ADActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize" />
+        <provider
+            android:name="com.bytedance.sdk.openadsdk.TTFileProvider"
+            android:authorities="${applicationId}.TTFileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/pangle_file_paths" />
+        </provider>
+        <provider
+            android:name="com.bytedance.sdk.openadsdk.multipro.TTMultiProvider"
+            android:authorities="${applicationId}.TTMultiProvider"
+            android:exported="false" />
+        <provider
+            android:name="com.google.android.gms.ads.MobileAdsInitProvider"
+            android:authorities="${applicationId}.mobileadsinitprovider"
+            tools:replace="android:authorities" />
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-3940256099942544~3347511713" />
 <!--            android:name="com.vanzoo.novel.ui.MainActivityNoViewPager"-->
 <!--            android:exported="true"-->
-<!--            android:theme="@style/MainTheme">-->
+        <activity
+            android:name="com.baidu.mobads.sdk.api.AppActivity"
+            android:configChanges="screenSize|keyboard|keyboardHidden|orientation"
+            android:theme="@android:style/Theme.NoTitleBar" />
+        <activity
+            android:name="com.baidu.mobads.sdk.api.MobRewardVideoActivity"
+            android:configChanges="screenSize|orientation|keyboardHidden"
+            android:launchMode="singleTask"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <provider
+            android:name="com.baidu.mobads.sdk.api.BdFileProvider"
+            android:authorities="${applicationId}.bd.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/bd_file_paths" />
+        </provider>
+        <provider
+            android:name="com.tencent.klevin.utils.FileProvider"
+            android:authorities="${applicationId}.klevin.fileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/klevin_provider_paths" />
+        </provider>
 <!--            <intent-filter>-->
 <!--                <action android:name="android.intent.action.MAIN" />-->
 
 <!--                <category android:name="android.intent.category.LAUNCHER" />-->
+        <provider
+            android:name="com.mbridge.msdk.foundation.tools.MBFileProvider"
+            android:authorities="${applicationId}.mbFileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/mb_provider_paths" />
+        </provider>
 <!--            </intent-filter>-->
 <!--        </activity>-->
     </application>

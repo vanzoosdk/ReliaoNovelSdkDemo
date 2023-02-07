@@ -45,40 +45,70 @@ dependencies {
     implementation 'com.google.android.material:material:1.4.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.1'
 
-    //*****************************ADroi卓易广告*******************************
-//    //ADroi聚合SDK
-//    implementation(name: 'adroi.poly.sdk-10.0.0.33', ext: 'aar')
-//    //广点通SDK
-//    implementation(name: 'GDTSDK.unionNormal.4.464.1334', ext: 'aar')
-//    //广点通广告辅助SDK，注意仅用于编译，不可打入应用当中
-//    compileOnly fileTree('libs/tbs_sdk_thirdapp_v4.3.0.1020_43633_compile_only.jar')
-//    //穿山甲SDK
-//    implementation(name: 'open_ad_sdk_4.4.0.9', ext: 'aar')
-//    //快手SDK
-//    implementation(name: 'kssdk-ad-3.3.24', ext: 'aar')
-//    //百度SDK
-//    implementation(name: 'Baidu_MobAds_SDK-release_v9.212', ext: 'aar')
-//    // 华为
-//    implementation 'com.huawei.hms:ads:3.4.47.302'
-//    // 京东
-//    implementation(name: 'jad_yun_sdk_v1.2.0', ext: 'aar')
-//    //gif库
-//    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.15'
-    //*****************************ADroi卓易广告*******************************
-
-    //adroi在线依赖
-    implementation('com.adroi.polyunion:adroi.poly.sdk:10.0.0.63') {
-//         exclude group: 'com.qq.e.union' //广点通
-//         exclude group: 'com.kssdk.ad'  //快手
-//         exclude group: 'com.baidu.mobads.sdk'  //百度
-//         exclude group: 'com.jad.yun'  //京东
-//         exclude group: 'com.huawei.hms'  //华为
-//         exclude group: 'com.pangle.cn'  //穿山甲
-    }
-
     // 热料小说sdk
-    implementation 'io.github.vanzoosdk:ReliaoNovelSdk:1.2.9'
+    implementation 'io.github.vanzoosdk:ReliaoNovelSdk:2.0.2'
     // Glide
     implementation 'com.github.bumptech.glide:glide:4.12.0'
 
+
+    //GroMore_sdk start
+    implementation "com.gromore.cn:gromore-sdk:3.8.0.2"  //groMore sdk
+//    implementation "com.gromore.cn:gromore-test-tools:3.8.0.2" //groMore 测试工具
+
+    //GroMore_sdk adapter
+    implementation "com.gromore.cn:gdt-adapter:4.492.1362.0"  //gdt adapter
+    implementation "com.gromore.cn:ks-adapter:3.3.32.0"  //ks adapter
+    def support_version = "28.0.0" //建议使用的26以上的support库版本，建议使用28最新的即可。
+    // supprot库依赖，SDK内部依赖如下support，请确保添加
+    implementation "com.android.support:recyclerview-v7:$support_version"
+    implementation "com.gromore.cn:baidu-adapter:9.241.3" //百度 adapter
+    implementation "com.gromore.cn:mintegral-adapter:16.2.67.0" //mintegral adapter
+    implementation "com.gromore.cn:admob-adapter:17.2.0.36" // admob adapter
+    implementation "com.gromore.cn:unity-adapter:4.3.0.5" //unity adapter
+    implementation "com.gromore.cn:sigmob-adapter:4.8.2.0" //sigmob adapter
+    implementation "com.gromore.cn:klevin-adapter:2.9.1.5.5" //klevin 游可赢 adapter
+    implementation "com.gromore.cn:pangle-adapter:4.9.0.8.0" //穿山甲 adapter
+
+    //Baidu
+    implementation(name: 'Baidu_MobAds_SDK_v9.241', ext: 'aar')
+
+    //unity
+    implementation(name: 'unity-ads-4.3.0', ext: 'aar')
+
+    //pangle
+    implementation(name: 'open_ad_sdk_4.9.0.8', ext: 'aar')
+
+    //GDT
+    implementation(name: 'GDTSDK.unionNormal.4.492.1362', ext: 'aar')
+
+    //admob
+    implementation 'com.google.android.gms:play-services-ads:17.2.0'
+
+    //ks 快手
+    implementation(name: 'kssdk-ad-3.3.32', ext: 'aar')
+
+    //sigmob
+    implementation(name: 'windAd-4.8.2', ext: 'aar')
+    implementation(name: 'windAd-common-1.4.0', ext: 'aar')
+
+    //klevin 游可赢
+    implementation(name: 'klevinSDK_2.9.1.5', ext: 'aar')
+
+    //mintegral
+    implementation("com.mbridge.msdk.support:videojs:16.2.67")
+    implementation("com.mbridge.msdk.support:mbjscommon:16.2.67")
+    implementation("com.mbridge.msdk.support:playercommon:16.2.67")
+    implementation("com.mbridge.msdk.support:reward:16.2.67")
+    implementation("com.mbridge.msdk.support:videocommon:16.2.67")
+    implementation("com.mbridge.msdk.support:chinasame:16.2.67")
+    implementation("com.mbridge.msdk.support:interstitialvideo:16.2.67")
+    implementation("com.mbridge.msdk.support:mbnative:16.2.67")
+    implementation("com.mbridge.msdk.support:nativeex:16.2.67")
+    implementation("com.mbridge.msdk.support:mbnativeadvanced:16.2.67")
+    implementation("com.mbridge.msdk.support:interstitial:16.2.67")
+    implementation("com.mbridge.msdk.support:mbbanner:16.2.67")
+    implementation("com.mbridge.msdk.support:mbsplash:16.2.67")
+    implementation("com.mbridge.msdk.support:mbbid:16.2.67")
+    implementation("com.mbridge.msdk.support:newinterstitial:16.2.67")
+    //GroMore_sdk end
 }
