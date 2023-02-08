@@ -104,8 +104,8 @@ NovelSdk.openBookInfo(context,book)
 ```
 
 ### 五、其他
-1.关于混淆 混淆规则已打包在aar包里
-2.因阅读页章节中广告展示这块与其他页面不同，需要监听广告关闭的动作，若广告源中有优量汇bidding广告，需要在YLH 信息流广告自定义Adapter的onADClosed()方法中添加callNativeDislikeCancel回调，示例如下
+##### 1.关于混淆 混淆规则已打包在aar包里
+##### 2.因阅读页章节中广告展示这块与其他页面不同，需要监听广告关闭的动作，若广告源中有优量汇bidding广告，需要在YLH 信息流广告自定义Adapter的onADClosed()方法中添加callNativeDislikeCancel回调，示例如下
 ```
  @Override
 public void onADClosed(NativeExpressADView nativeExpressADView) {
